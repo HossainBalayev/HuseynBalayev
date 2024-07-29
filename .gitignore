@@ -1,7 +1,26 @@
-*.pyc
+# Python spesifik istisnalar
 __pycache__/
-db.sqlite3
-staticfiles/
+*.pyc
+*.pyo
+
+# Django spesifik istisnalar
+*.log
+*.pot
+*.pyc
+*.mo
+*.pot
+*.log
+*.db
+*.sqlite3
+
+# Media faylları
 media/
-myenv/
+uploads/
+
+# Ətraf mühit faylları
+myenv
+
+# IDE spesifik istisnalar
+.vscode/
+.idea/
 
