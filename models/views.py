@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from .models import Product, Blog
 
 def home(request):
-    return render(request, 'index.html')
+    context = {
+        'products' : Product.objects.all(),
+    }
+    return render(request, 'index.html', context)
 
 def base(request):
     return render(request, 'base.html')
@@ -12,11 +16,11 @@ def about(request):
 def main(request):
     return render(request, 'main.html')
 
-def blog_details(request):
-    return render(request, 'blog-details.html')
-
 def blog(request):
-    return render(request, 'blog.html')
+    context = {
+        'blogs' : Blog.objects.all(),
+    }
+    return render(request, 'blog.html', context)
 
 def checkout(request):
     return render(request, 'checkout.html')
@@ -32,3 +36,10 @@ def shop(request):
 
 def shopping_cart(request):
     return render(request, 'shopping-cart.html')
+
+def blog_details(request, id):
+    blog = Blog.objects.get(id=id)
+    context = {
+        'blog': blog,
+    }
+    return render(request, 'blog-details.html', context)

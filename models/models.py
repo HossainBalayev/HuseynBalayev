@@ -69,7 +69,16 @@ class Product(BaseModel):
     colors = models.CharField(choices=COLORS, max_length=10)
     sizes = models.CharField(choices=SIZES, max_length=10)
     seasons = models.CharField(choices=SEASONS, max_length=10)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
+
+
+class Blog(BaseModel):
+    image = models.ImageField(upload_to='blog/', null=True, blank=True)
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.title
     
 
 
