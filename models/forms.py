@@ -2,7 +2,6 @@ from django import forms
 from .models import Contact
 
 class ContactForm(forms.ModelForm):
-
     class Meta:
         model = Contact
         fields = ('name', 'email', 'message')
@@ -21,7 +20,7 @@ class ContactForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         if Contact.objects.filter(email=email).exists():
-            raise forms.ValidationError('This mail is already in use')
+            raise forms.ValidationError('This e-mail is already in use')
         return email
     
 
