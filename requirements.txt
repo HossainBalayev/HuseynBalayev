@@ -6,3 +6,4 @@ psycopg2-binary==2.9.9
 sqlparse==0.5.0
 tzdata==2024.1
 git+https://github.com/arifogluisa/django-jazzmin.git
+django-jazzmin==3.0.0

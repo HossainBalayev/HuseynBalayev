@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product, Blog
+from .forms import ContactForm
 
 def home(request):
     context = {
@@ -43,3 +44,15 @@ def blog_details(request, id):
         'blog': blog,
     }
     return render(request, 'blog-details.html', context)
+
+
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
