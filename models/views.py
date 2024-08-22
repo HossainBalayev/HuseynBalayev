@@ -56,3 +56,18 @@ def contact_view(request):
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
 
+
+
+def search_field(request):
+    query = request.GET.get('q')
+    if query:
+        products = Product.objects.filter(name__icontains=query)
+    else:
+        products = Product.objects.none() 
+
+    context = {
+        'products': products,
+    }
+    return render(request, 'search.html', context=context)
+
+

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -41,9 +42,9 @@ class Category(BaseModel):
         return self.name
 
 class Setting(BaseModel):
-    logo = models.ImageField(upload_to='logo/')
-    slider_image1 = models.ImageField(upload_to='slider/')
-    slider_image2 = models.ImageField(upload_to='slider/')
+    logo = models.ImageField(upload_to='media/logo/')
+    slider_image1 = models.ImageField(upload_to='media/slider/')
+    slider_image2 = models.ImageField(upload_to='media/slider/')
     facebook = models.URLField(null=True, blank=True)
     twitter = models.URLField(null=True, blank=True)
     pinterest = models.URLField(null=True, blank=True)
@@ -61,7 +62,7 @@ class Setting(BaseModel):
 class Product(BaseModel):
     name = models.CharField(max_length=20)
     price = models.FloatField()
-    image = models.ImageField(upload_to='product/')
+    image = models.ImageField(upload_to='media/product/')
     like = models.IntegerField(default=0)
     view = models.IntegerField(default=0)
     description = models.TextField(max_length=500, null= True, blank=True)
@@ -73,9 +74,10 @@ class Product(BaseModel):
 
 
 class Blog(BaseModel):
-    image = models.ImageField(upload_to='blog/', null=True, blank=True)
+    image = models.ImageField(upload_to='media/blog/', null=True, blank=True)
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
+    published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title

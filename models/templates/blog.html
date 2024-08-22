@@ -24,8 +24,8 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="{{ blog.image.url }}"></div>
                         <div class="blog__item__text">
-                            <span><img src="{{ blog.image.url }}" alt=""> 16 February 2020</span>
-                            <h5>{{ i.title }}</h5>
+                            <span>{{ blog.published_date|date:"d F Y" }}</span>
+                            <h5>{{ blog.title }}</h5>
                             <a href="{% url 'blog_details' blog.id %}">Read More</a>
                         </div>
                     </div>
